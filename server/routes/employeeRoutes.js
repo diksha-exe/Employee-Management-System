@@ -1,0 +1,25 @@
+const express = require("express");
+
+const {
+  getEmployees,
+  getEmployeeById,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+} = require("../controllers/employeeController");
+
+const router = express.Router();
+
+//check the method and the url and then call the appropriate controller function
+
+router.get("/", getEmployees);
+
+router.get("/:id", getEmployeeById);
+
+router.post("/", createEmployee);
+
+router.put("/:id", updateEmployee);
+
+router.delete("/:id", deleteEmployee);
+
+module.exports = router;
