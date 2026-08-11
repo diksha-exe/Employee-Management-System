@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import StatsCards from "../components/StatsCards";
-import EmployeeTable from "../components/EmployeeTable";
-import EmployeeModal from "../components/EmployeeModal";
-import SearchBar from "../components/SearchBar";
+import StatsCards from "../components/dashboard/StatsCards";
+import EmployeeTable from "../components/dashboard/EmployeeTable";
+import EmployeeModal from "../components/dashboard/EmployeeModal";
+import SearchBar from "../components/dashboard/SearchBar";
 
 import {
   getEmployees,
@@ -186,99 +184,89 @@ function Dashboard() {
   ];
 
   return (
-    <div className="app-layout">
+    <div className="dashboard-content">
 
-      <Sidebar />
+      {/* Page heading */}
 
-      <main className="main-content">
+      <div className="page-heading">
 
-        <Header />
+        <div>
+          <h1>Employee Management</h1>
 
-        <div className="dashboard-content">
+          <p>
+            Manage your organization's employees
+          </p>
+        </div>
 
-          {/* Page heading */}
+        <button
+          className="add-employee-btn"
+          onClick={() => {
+            setEditingEmployee(null);
+            setIsModalOpen(true);
+          }}
+        >
+          <span>+</span>
+          Add Employee
+        </button>
 
-          <div className="page-heading">
+      </div>
 
-            <div>
-              <h1>Employee Management</h1>
+      {/* Error */}
 
-              <p>
-                Manage your organization's employees
-              </p>
-            </div>
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
 
-            <button
-              className="add-employee-btn"
-              onClick={() => {
-                setEditingEmployee(null);
-                setIsModalOpen(true);
-              }}
-            >
-              <span>+</span>
-              Add Employee
-            </button>
+      {/* Stats */}
 
+      <StatsCards employees={employees} />
+
+      {/* Employee section */}
+
+      <section className="employee-section">
+
+        <div className="section-header">
+
+          <div>
+            <h2>Employees</h2>
+
+            <p>
+              View and manage employee records
+            </p>
           </div>
-
-          {/* Error */}
-
-          {error && (
-            <div className="error-message">
-              {error}
-            </div>
-          )}
-
-          {/* Stats */}
-
-          <StatsCards employees={employees} />
-
-          {/* Employee section */}
-
-          <section className="employee-section">
-
-            <div className="section-header">
-
-              <div>
-                <h2>Employees</h2>
-
-                <p>
-                  View and manage employee records
-                </p>
-              </div>
-
-            </div>
-
-            {/* Search */}
-
-            <SearchBar
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              department={department}
-              setDepartment={setDepartment}
-              departments={departments}
-            />
-
-            {/* Table */}
-
-            {loading ? (
-              <div className="loading-state">
-                <div className="spinner"></div>
-                <p>Loading employees...</p>
-              </div>
-            ) : (
-              <EmployeeTable
-                employees={filteredEmployees}
-                onEdit={handleEditClick}
-                onDelete={handleDeleteEmployee}
-              />
-            )}
-
-          </section>
 
         </div>
 
-      </main>
+        {/* Search */}
+
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          department={department}
+          setDepartment={setDepartment}
+          departments={departments}
+        />
+
+        {/* Table */}
+
+        {loading ? (
+          <div className="loading-state">
+            <div className="spinner"></div>
+            <p>Loading employees...</p>
+          </div>
+        ) : (
+          <EmployeeTable
+            employees={filteredEmployees}
+            onEdit={handleEditClick}
+            onDelete={handleDeleteEmployee}
+          />
+        )}
+
+      </section>
+
+    
 
       {/* Modal */}
 
@@ -290,6 +278,7 @@ function Dashboard() {
       />
 
     </div>
+
   );
 }
 

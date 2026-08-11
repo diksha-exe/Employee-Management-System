@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom"; //to click on name and go to Employee Table
+
 import {
   Pencil,
   Trash2,
   Mail,
   Phone,
 } from "lucide-react";
+
 
 function EmployeeTable({
   employees,
@@ -80,12 +83,23 @@ function EmployeeTable({
                       .toUpperCase()}
                   </div>
 
-                  <div>
+                  {/* <div>
                     <strong>
                       {employee.name}
                     </strong>
+                  </div> */}
+                  
+{/* Make the employee name a link */}
+                  <div>
+                    <Link
+                      to={`/employee/${employee._id}`}
+                      className="employee-name-link"
+                    >
+                      <strong>
+                        {employee.name}
+                      </strong>
+                    </Link>
                   </div>
-
                 </div>
 
               </td>

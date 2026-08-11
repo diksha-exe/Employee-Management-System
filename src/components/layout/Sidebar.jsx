@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import {
   LayoutDashboard,
   Users,
@@ -9,6 +11,8 @@ import {
 function Sidebar() {
   return (
     <aside className="sidebar">
+
+      {/* Logo */}
 
       <div className="sidebar-logo">
 
@@ -23,39 +27,69 @@ function Sidebar() {
 
       </div>
 
+
+      {/* Navigation */}
+
       <nav className="sidebar-nav">
 
-        <p className="nav-label">MAIN MENU</p>
+        <p className="nav-label">
+          MAIN MENU
+        </p>
 
-        <button className="nav-item active">
+
+        {/* Dashboard */}
+
+        <NavLink
+          to="/dashboard"
+          end
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
           <LayoutDashboard size={18} />
           Dashboard
-        </button>
+        </NavLink>
 
-        <button className="nav-item">
+
+        {/* Employees */}
+
+        <NavLink
+          to="/employee"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
           <Users size={18} />
           Employees
-        </button>
+        </NavLink>
 
-        <button className="nav-item">
-          <Building2 size={18} />
-          Departments
-        </button>
 
         <p className="nav-label settings-label">
           SYSTEM
         </p>
 
-        <button className="nav-item">
+
+        {/* Settings */}
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
           <Settings size={18} />
           Settings
-        </button>
+        </NavLink>
 
       </nav>
+
+
+      {/* Bottom profile */}
 
       <div className="sidebar-bottom">
 
         <div className="profile-mini">
+
           <div className="profile-avatar">
             HR
           </div>
@@ -64,6 +98,7 @@ function Sidebar() {
             <strong>HR Admin</strong>
             <span>Administrator</span>
           </div>
+
         </div>
 
       </div>

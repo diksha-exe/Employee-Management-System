@@ -829,3 +829,8 @@
     padding: 15px;
   }
 }
+
+.employee-name-link {
+  text-decoration: none;
+  color: inherit;
+}
