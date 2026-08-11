@@ -1,12 +1,21 @@
-const express = require("express");
+// const express = require("express");
+import express from "express";
 
-const {
+// const {
+//   getEmployees,
+//   getEmployeeById,
+//   createEmployee,
+//   updateEmployee,
+//   deleteEmployee,
+// } = require("../controllers/employeeController");
+
+import {
   getEmployees,
   getEmployeeById,
   createEmployee,
   updateEmployee,
-  deleteEmployee,
-} = require("../controllers/employeeController");
+  deleteEmployee
+} from "../controllers/employeeController.js";
 
 const router = express.Router();
 
@@ -22,4 +31,5 @@ router.put("/:id", updateEmployee);
 
 router.delete("/:id", deleteEmployee);
 
-module.exports = router;
+// module.exports = router;
+export default router;

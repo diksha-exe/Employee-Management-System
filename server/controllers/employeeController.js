@@ -1,4 +1,5 @@
-const Employee = require("../models/Employee");
+// const Employee = require("../models/Employee");
+import Employee from "../models/Employee.js";  //With ES Modules, your local file imports need the .js extension.
 
 // GET all employees
 const getEmployees = async (req, res) => {
@@ -131,10 +132,18 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
-module.exports = {
+// module.exports = {
+//   getEmployees,
+//   getEmployeeById,
+//   createEmployee,
+//   updateEmployee,
+//   deleteEmployee,
+// };
+
+export {
   getEmployees,
   getEmployeeById,
   createEmployee,
   updateEmployee,
-  deleteEmployee,
+  deleteEmployee
 };

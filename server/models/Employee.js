@@ -1,5 +1,6 @@
 // Create Employee Schema
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const employeeSchema = new mongoose.Schema(
   {
@@ -53,4 +54,5 @@ const employeeSchema = new mongoose.Schema(
 
 const Employee = mongoose.model("Employee", employeeSchema);
 
-module.exports = Employee;
+// module.exports = Employee;
+export default Employee;
