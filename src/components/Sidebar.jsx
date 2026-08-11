@@ -17,7 +17,7 @@ function Sidebar() {
         </div>
 
         <div>
-          <h2>PeopleHub</h2>
+          <h2>HR-One</h2>
           <span>HR Management</span>
         </div>
 
